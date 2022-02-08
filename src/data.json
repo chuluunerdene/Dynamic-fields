@@ -1,0 +1,36 @@
+{
+  "buttons": [
+    {
+      "label": "Ok"
+    },
+    {
+      "label": "Cancel"
+    }
+  ],
+  "fields": [
+    {
+      "label": "Number",
+      "type": "number"
+    },
+    {
+      "label": "Title",
+      "type": "text"
+    },
+    {
+      "label": "Count",
+      "type": "checkbox"
+    },
+    {
+      "label": "Radio",
+      "type": "radio"
+    },
+    {
+      "label": "Date",
+      "type": "date"
+    },
+    {
+      "label": "Description",
+      "type": "textarea"
+    }
+  ]
+}
