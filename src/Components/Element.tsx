@@ -9,7 +9,7 @@ interface Fields {
 
 export const Element = ({ data }: Fields) => {
   const { type, label } = data;
-  console.log(type);
+
   switch (type) {
     case "checkbox":
     case "date":

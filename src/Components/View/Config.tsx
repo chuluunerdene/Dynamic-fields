@@ -29,6 +29,8 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const [input, setInput] = useState<string>("");
   const { activeTab, setActiveTab }: Context = useContext(TabContext);
 
+  const updateProgress = () => setActiveTab("1");
+
   const handleConfig = () => {
     try {
       const data: TConfig[] = JSON.parse(input);
@@ -37,10 +39,6 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
       throw new Error("Invalid JSON");
     }
     updateProgress();
-  };
-
-  const updateProgress = () => {
-    setActiveTab("1");
   };
 
   return (
