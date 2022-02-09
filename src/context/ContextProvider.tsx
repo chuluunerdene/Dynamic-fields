@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
-import { Context } from "../Components/Types/Types";
+import { TContext } from "../Components/Types/Types";
 
-export const TabContext = createContext<Context>({
+export const TabContext = createContext<TContext>({
   activeTab: "",
   setActiveTab(): void {},
 });

@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useContext, useState } from "react";
 import styled from "styled-components";
-import { Context, TConfig } from "../Types/Types";
+import { TContext, TConfig } from "../Types/Types";
 import { TabContext } from "../../context/ContextProvider";
 
 const Wrapper = styled.div<{ active: string }>`
@@ -19,23 +19,26 @@ const Wrapper = styled.div<{ active: string }>`
 const ButtonWrapper = styled.div`
   display: inherit;
   justify-content: flex-end;
+  button{
+    font-size: 1.3em;
+  }
 `;
 
 interface IConfig {
-  setConfig: Dispatch<SetStateAction<TConfig[]>>;
+  setConfig: Dispatch<SetStateAction<TConfig>>;
 }
 
 export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const [input, setInput] = useState<string>("");
-  const { activeTab, setActiveTab }: Context = useContext(TabContext);
+  const { activeTab, setActiveTab }: TContext = useContext(TabContext);
 
-  const updateProgress = () => setActiveTab("1");
+  const updateProgress = (): void => setActiveTab("1");
 
-  const handleConfig = () => {
+  const handleConfig = (): void => {
     try {
-      const data: TConfig[] = JSON.parse(input);
+      const data: TConfig = JSON.parse(input);
       setConfig(data);
-    } catch (err) {
+    } catch (error) {
       throw new Error("Invalid JSON");
     }
     updateProgress();

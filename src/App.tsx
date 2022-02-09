@@ -10,9 +10,9 @@ const Wrapper = styled.div`
   margin: 20px;
   max-width: 600px;
 `;
-function App() {
-  const [config, setConfig] = useState<TConfig[]>([]);
 
+function App() {
+  const [config, setConfig] = useState<TConfig>({ buttons: [], fields: [] });
   return (
     <Wrapper>
       <Tabs />

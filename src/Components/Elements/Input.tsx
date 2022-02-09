@@ -5,28 +5,28 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  margin-top: 10px;
+  margin: 10px;
+  width: 330px;
 `;
 const LabelWrapper = styled.div`
   min-width: 130px;
 `;
-const ElementWrapper = styled.div``;
 
-interface InputProps {
+interface IInputProps {
   label: string;
   type: string;
 }
 
 // @ts-ignore
-export const Input = ({ type, label }: InputProps) => {
+export const Input = ({ type, label }: IInputProps): JSX.Element => {
   return (
     <Wrapper>
       <LabelWrapper>
         <label>{label}</label>
       </LabelWrapper>
-      <ElementWrapper>
-        <input type={type} />
-      </ElementWrapper>
+      <div>
+        <input aria-label={label} type={type} />
+      </div>
     </Wrapper>
   );
 };

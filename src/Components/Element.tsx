@@ -1,14 +1,16 @@
 import { Input } from "./Elements/Input";
 import { Textarea } from "./Elements/Textarea";
+import { Button } from "./Elements/Button";
+
 import React from "react";
 import { TElements } from "./Types/Types";
 
-interface Fields {
-  data: TElements;
+interface IFields {
+  fields: TElements;
 }
 
-export const Element = ({ data }: Fields) => {
-  const { type, label } = data;
+export const Element = ({ fields }: IFields): JSX.Element | null => {
+  const { type, label } = fields;
 
   switch (type) {
     case "checkbox":
@@ -19,6 +21,8 @@ export const Element = ({ data }: Fields) => {
       return <Input type={type} label={label} />;
     case "textarea":
       return <Textarea label={label} />;
+    case "button":
+      return <Button label={label!} />;
     default:
       return null;
   }

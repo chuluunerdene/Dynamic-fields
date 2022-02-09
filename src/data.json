@@ -1,10 +1,12 @@
 {
   "buttons": [
     {
-      "label": "Ok"
+      "label": "Submit",
+      "type": "button"
     },
     {
-      "label": "Cancel"
+      "label": "Cancel",
+      "type": "button"
     }
   ],
   "fields": [
@@ -13,11 +15,11 @@
       "type": "number"
     },
     {
-      "label": "Title",
+      "label": "Text",
       "type": "text"
     },
     {
-      "label": "Count",
+      "label": "Checkbox",
       "type": "checkbox"
     },
     {

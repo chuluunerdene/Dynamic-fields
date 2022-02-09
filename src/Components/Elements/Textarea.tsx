@@ -5,18 +5,19 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   gap: 20px;
   margin-top: 10px;
+  width: 330px;
 `;
 const LabelWrapper = styled.div`
   min-width: 130px;
 `;
-export const Textarea = ({ label }: any) => {
+export const Textarea = ({ label }:{label:string}) => {
   return (
     <Wrapper>
       <LabelWrapper>
         <label>{label}</label>
       </LabelWrapper>
       <div>
-        <textarea/>
+        <input aria-label={label} />
       </div>
     </Wrapper>
   );

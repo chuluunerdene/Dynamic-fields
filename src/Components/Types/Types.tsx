@@ -1,17 +1,14 @@
 export type TConfig = {
-  buttons: TButtons;
-  fields: TElements;
-};
-export type TButtons = {
-  label: string;
+  buttons: TElements[];
+  fields: TElements[];
 };
 
 export type TElements = {
   label: string;
-  type: string;
+  type?: string;
 };
 
-export type Context = {
+export type TContext = {
   activeTab: string;
   setActiveTab: (value: string) => void;
 };

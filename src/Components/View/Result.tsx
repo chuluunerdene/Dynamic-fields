@@ -1,30 +1,61 @@
 import { Element } from "../Element";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Context, TConfig, TElements } from "../Types/Types";
+import { TContext, TConfig, TElements } from "../Types/Types";
 import { TabContext } from "../../context/ContextProvider";
 
 const Wrapper = styled.div<{ active: string }>`
-  display: ${(props) => (props.active === "1" ? "block" : "none")};
+  display: ${(props) => (props.active === "1" ? "flex" : "none")};
+  flex-direction: column;
 `;
 
-interface ResultProps {
-  config: TConfig[];
+const FieldWrapper = styled.div`
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 20px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: inherit;
+  justify-content: flex-end;
+  border: 1px solid black;
+  border-top: none;
+  padding: 20px;
+`;
+
+interface IResultProps {
+  config: TConfig;
 }
 
-export const Result = ({ config }: ResultProps): JSX.Element => {
-  const { activeTab }: Context = useContext(TabContext);
+interface IDestruction {
+  fields: TElements[];
+  buttons: TElements[];
+}
 
-  const getElements = () => {
-    return config["fields"].map((element: TElements, index: any) => {
-      return <Element key={index} data={element} />;
+export const Result = ({ config }: IResultProps): JSX.Element => {
+  const { activeTab }: TContext = useContext(TabContext);
+  const { fields, buttons }: IDestruction = config;
+
+  const getElements = (): JSX.Element[] => {
+    return fields.map((element: TElements, index: number) => {
+      return <Element key={index} fields={element} />;
+    });
+  };
+
+  const getButtons = (): JSX.Element[] => {
+    return buttons.map((element: TElements, index: number) => {
+      return <Element key={index} fields={element} />;
     });
   };
   return (
-    <>
-      <Wrapper active={activeTab}>
-        {config.length !== 0 ? getElements() : "No data"}
-      </Wrapper>
-    </>
+    <Wrapper active={activeTab}>
+      <FieldWrapper>
+        {fields.length !== 0 ? getElements() : "No fields data"}
+      </FieldWrapper>
+      <ButtonWrapper>{buttons.length !== 0 ? getButtons() : ""}</ButtonWrapper>
+    </Wrapper>
   );
 };
