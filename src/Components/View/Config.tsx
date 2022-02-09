@@ -31,16 +31,17 @@ interface IConfig {
 export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const [input, setInput] = useState<string>("");
   const { activeTab, setActiveTab }: TContext = useContext(TabContext);
+  let data: TConfig
 
   const updateProgress = (): void => setActiveTab("1");
 
   const handleConfig = (): void => {
     try {
-      const data: TConfig = JSON.parse(input);
-      setConfig(data);
+      data = JSON.parse(input);
     } catch (error) {
       throw new Error("Invalid JSON");
     }
+    setConfig(data);
     updateProgress();
   };
 
