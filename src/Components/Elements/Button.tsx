@@ -8,13 +8,11 @@ const Wrapper = styled.div`
   }
 `;
 
-
-// @ts-ignore
-export const Button = ({ label }:{label:string}): JSX.Element => {
+export const Button = ({ label }: { label: string }): JSX.Element => {
   return (
     <Wrapper>
       <div>
-          <button role="button" >{label}</button>
+        <button role="button">{label}</button>
       </div>
     </Wrapper>
   );

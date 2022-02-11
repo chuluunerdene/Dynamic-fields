@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 const LabelWrapper = styled.div`
   min-width: 130px;
 `;
-export const Textarea = ({ label }:{label:string}) => {
+export const Textarea = ({ label }: { label: string }) => {
   return (
     <Wrapper>
       <LabelWrapper>

@@ -17,7 +17,6 @@ interface IInputProps {
   type: string;
 }
 
-// @ts-ignore
 export const Input = ({ type, label }: IInputProps): JSX.Element => {
   return (
     <Wrapper>

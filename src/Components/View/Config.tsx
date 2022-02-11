@@ -19,9 +19,13 @@ const Wrapper = styled.div<{ active: string }>`
 const ButtonWrapper = styled.div`
   display: inherit;
   justify-content: flex-end;
-  button{
+  button {
     font-size: 1.3em;
   }
+`;
+const ErrorWrapper = styled.span`
+  color: red;
+  align-self: center;
 `;
 
 interface IConfig {
@@ -30,26 +34,40 @@ interface IConfig {
 
 export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const [input, setInput] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const { activeTab, setActiveTab }: TContext = useContext(TabContext);
-  let data: TConfig
 
-  const updateProgress = (): void => setActiveTab("1");
+  const isValid = (): boolean | null=> {
+    try {
+      let obj:TConfig = JSON.parse(input);
+      if (obj !== null && typeof obj === "object")
+        return true;
+    } catch (e) {
+      setError("Invalid JSON");
+      return false;
+    }
+    return null
+  };
 
   const handleConfig = (): void => {
-    try {
-      data = JSON.parse(input);
-    } catch (error) {
-      throw new Error("Invalid JSON");
+    if (isValid()){
+      setConfig(JSON.parse(input))
+      setError("");
+      setActiveTab("1");
     }
-    setConfig(data);
-    updateProgress();
+
   };
 
   return (
     <Wrapper active={activeTab}>
       <div>
-        <textarea onChange={(e) => setInput(e.target.value)}></textarea>
+        <textarea
+          placeholder="
+        {'buttons': [{'label': 'Submit','type': 'button'}],'fields': [{ 'label': 'Number','type': 'number' },..."
+          onChange={(e) => setInput(e.target.value)}
+        ></textarea>
       </div>
+      <ErrorWrapper>{error}</ErrorWrapper>
       <ButtonWrapper>
         <button onClick={handleConfig}> Apply</button>
       </ButtonWrapper>
