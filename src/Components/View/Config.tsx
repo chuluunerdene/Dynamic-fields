@@ -37,15 +37,13 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const [error, setError] = useState<string>("");
   const { activeTab, setActiveTab }: TContext = useContext(TabContext);
 
-  const isValid = (): boolean | null=> {
+  const isValid = (): boolean => {
     try {
-      let obj:TConfig = JSON.parse(input);
-      if (obj instanceof Object )
+        JSON.parse(input);
         return true;
     } catch (e) {
       return false;
     }
-    return null
   };
 
   const handleConfig = (): void => {
