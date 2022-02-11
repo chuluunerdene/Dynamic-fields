@@ -40,7 +40,7 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
   const isValid = (): boolean | null=> {
     try {
       let obj:TConfig = JSON.parse(input);
-      if (obj !== null && typeof obj === "object")
+      if (obj instanceof Object )
         return true;
     } catch (e) {
       return false;
