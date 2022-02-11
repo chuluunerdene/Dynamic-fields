@@ -43,7 +43,6 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
       if (obj !== null && typeof obj === "object")
         return true;
     } catch (e) {
-      setError("Invalid JSON");
       return false;
     }
     return null
@@ -54,6 +53,8 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
       setConfig(JSON.parse(input))
       setError("");
       setActiveTab("1");
+    }else{
+      setError("Invalid JSON");
     }
 
   };
