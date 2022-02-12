@@ -11,8 +11,7 @@ const Wrapper = styled.div`
 export const Button = ({ label }: { label: string }): JSX.Element => {
   return (
     <Wrapper>
-        <button role="button">{label}</button>
-
+      <button role="button">{label}</button>
     </Wrapper>
   );
 };

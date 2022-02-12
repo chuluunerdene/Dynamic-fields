@@ -37,13 +37,22 @@ export const Config = ({ setConfig }: IConfigProps): JSX.Element => {
   const [error, setError] = useState<string>("");
   const { activeTab, setActiveTab }: TContext = useContext(TabContext);
 
-  const handleConfig = (): void => {
+  const isJsonValid = (): boolean => {
     try {
+      JSON.parse(input);
+      return true;
+    } catch (error) {
+      setError("Invalid JSON");
+      console.error(error)
+    }
+    return false;
+  };
+
+  const handleInput = (): void => {
+    if (isJsonValid()) {
       setConfig(JSON.parse(input));
       setError("");
       setActiveTab("1");
-    } catch (e) {
-      setError("Invalid JSON");
     }
   };
 
@@ -58,7 +67,7 @@ export const Config = ({ setConfig }: IConfigProps): JSX.Element => {
       </div>
       <ErrorWrapper>{error}</ErrorWrapper>
       <ButtonWrapper>
-        <button onClick={handleConfig}> Apply</button>
+        <button onClick={handleInput}> Apply</button>
       </ButtonWrapper>
     </Wrapper>
   );

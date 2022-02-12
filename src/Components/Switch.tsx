@@ -10,7 +10,10 @@ interface ISwitcherProps {
   index: number;
 }
 
-export const Switch = ({ index, fields }: ISwitcherProps): JSX.Element | null => {
+export const Switch = ({
+  index,
+  fields,
+}: ISwitcherProps): JSX.Element | null => {
   const { type, label } = fields;
 
   switch (type) {

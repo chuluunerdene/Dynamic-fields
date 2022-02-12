@@ -55,9 +55,7 @@ export const Result = ({ config }: IResultProps): JSX.Element => {
       <FieldWrapper>
         {fields.length !== 0 ? getForms() : "No fields data"}
       </FieldWrapper>
-      <ButtonWrapper>
-        {buttons.length !== 0 ? getButtons() : ""}
-      </ButtonWrapper>
+      <ButtonWrapper>{buttons.length !== 0 ? getButtons() : ""}</ButtonWrapper>
     </Wrapper>
   );
 };
