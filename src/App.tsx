@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
-import { Config } from "./Components/View/Config";
-import { Result } from "./Components/View/Result";
-import { Tabs } from "./Components/View/Tabs";
+import { Config } from "./Components/UI/Config";
+import { Result } from "./Components/UI/Result";
+import { TabNav } from "./Components/UI/TabNav";
 import { TConfig } from "./Components/Types/Types";
 
 const Wrapper = styled.div`
@@ -15,7 +15,7 @@ function App() {
   const [config, setConfig] = useState<TConfig>({ buttons: [], fields: [] });
   return (
     <Wrapper>
-      <Tabs />
+      <TabNav />
       <Config setConfig={setConfig} />
       <Result config={config} />
     </Wrapper>

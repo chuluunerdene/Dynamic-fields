@@ -1,4 +1,4 @@
-import { Element } from "../Element";
+import { Switch } from "../Switch";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { TContext, TConfig, TElements } from "../Types/Types";
@@ -30,32 +30,34 @@ interface IResultProps {
   config: TConfig;
 }
 
-interface IDestruction {
+interface IConfigDestruction {
   fields: TElements[];
   buttons: TElements[];
 }
 
 export const Result = ({ config }: IResultProps): JSX.Element => {
   const { activeTab }: TContext = useContext(TabContext);
-  const { fields, buttons }: IDestruction = config;
+  const { fields, buttons }: IConfigDestruction = config;
 
-  const getElements = (): JSX.Element[] => {
+  const getForms= (): JSX.Element[] => {
     return fields.map((element: TElements, index: number) => {
-      return <Element key={index} fields={element} />;
+      return <Switch key={index} index={index} fields={element} />;
     });
   };
 
   const getButtons = (): JSX.Element[] => {
     return buttons.map((element: TElements, index: number) => {
-      return <Element key={index} fields={element} />;
+      return <Switch key={index} index={index} fields={element} />;
     });
   };
   return (
     <Wrapper active={activeTab}>
       <FieldWrapper>
-        {fields.length !== 0 ? getElements() : "No fields data"}
+        {fields.length !== 0 ? getForms() : "No fields data"}
       </FieldWrapper>
-      <ButtonWrapper>{buttons.length !== 0 ? getButtons() : ""}</ButtonWrapper>
+      <ButtonWrapper>
+        {buttons.length !== 0 ? getButtons() : ""}
+      </ButtonWrapper>
     </Wrapper>
   );
 };

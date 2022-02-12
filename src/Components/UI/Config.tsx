@@ -39,22 +39,21 @@ export const Config = ({ setConfig }: IConfig): JSX.Element => {
 
   const isValid = (): boolean => {
     try {
-        JSON.parse(input);
-        return true;
+      JSON.parse(input);
+      return true;
     } catch (e) {
       return false;
     }
   };
 
   const handleConfig = (): void => {
-    if (isValid()){
-      setConfig(JSON.parse(input))
+    if (isValid()) {
+      setConfig(JSON.parse(input));
       setError("");
       setActiveTab("1");
-    }else{
+    } else {
       setError("Invalid JSON");
     }
-
   };
 
   return (

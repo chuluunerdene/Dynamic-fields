@@ -5,11 +5,12 @@ import { Button } from "./Elements/Button";
 import React from "react";
 import { TElements } from "./Types/Types";
 
-interface IFields {
+interface ISwitcherProps {
   fields: TElements;
+  index: number;
 }
 
-export const Element = ({ fields }: IFields): JSX.Element | null => {
+export const Switch = ({ index, fields }: ISwitcherProps): JSX.Element | null => {
   const { type, label } = fields;
 
   switch (type) {
@@ -18,11 +19,11 @@ export const Element = ({ fields }: IFields): JSX.Element | null => {
     case "number":
     case "text":
     case "radio":
-      return <Input type={type} label={label} />;
+      return <Input key={index} type={type} label={label} />;
     case "textarea":
-      return <Textarea label={label} />;
+      return <Textarea key={index} label={label} />;
     case "button":
-      return <Button label={label!} />;
+      return <Button key={index} label={label!} />;
     default:
       return null;
   }

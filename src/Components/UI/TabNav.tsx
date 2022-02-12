@@ -18,7 +18,7 @@ const TabWrapper = styled.div`
   text-align: center;
 `;
 
-export const Tabs = (): JSX.Element => {
+export const TabNav = (): JSX.Element => {
   const { setActiveTab }: TContext = useContext(TabContext);
 
   const handleTab = (e: React.MouseEvent<HTMLDivElement>) => {
