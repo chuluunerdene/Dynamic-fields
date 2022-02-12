@@ -39,7 +39,7 @@ export const Result = ({ config }: IResultProps): JSX.Element => {
   const { activeTab }: TContext = useContext(TabContext);
   const { fields, buttons }: IConfigDestruction = config;
 
-  const getForms= (): JSX.Element[] => {
+  const getForms = (): JSX.Element[] => {
     return fields.map((element: TElements, index: number) => {
       return <Switch key={index} index={index} fields={element} />;
     });

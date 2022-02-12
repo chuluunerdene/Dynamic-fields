@@ -28,11 +28,11 @@ const ErrorWrapper = styled.span`
   align-self: center;
 `;
 
-interface IConfig {
+interface IConfigProps {
   setConfig: Dispatch<SetStateAction<TConfig>>;
 }
 
-export const Config = ({ setConfig }: IConfig): JSX.Element => {
+export const Config = ({ setConfig }: IConfigProps): JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [error, setError] = useState<string>("");
   const { activeTab, setActiveTab }: TContext = useContext(TabContext);
