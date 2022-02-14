@@ -5,26 +5,26 @@ import {Button} from "../Components/Elements/Button";
 import {Textarea} from "../Components/Elements/Textarea";
 
 
-test("Should return input React element", () => {
-    const obj =  {label: "Text", 'type': 'text'}
+let types = ['text', 'textarea', 'button']
+
+
+test("Should return input React element", async () => {
+    const obj =  {label: "", 'type': types[0]}
     const instance = create(<Switch fields={obj} index={0}/>)
-    // eslint-disable-next-line testing-library/await-async-query
-    const element =  instance.root.findByType(Input)
+    const element =  await instance.root.findByType(Input)
     expect(element).toBeTruthy()
 })
 
-test("Should return button React element", () => {
-    const obj =  {label: "button", 'type': 'button'}
+test("Should return button React element", async() => {
+    const obj =  {label: "", 'type': types[2]}
     const instance = create(<Switch fields={obj} index={0}/>)
-    // eslint-disable-next-line testing-library/await-async-query
-    const element =  instance.root.findByType(Button)
+    const element =  await instance.root.findByType(Button)
     expect(element).toBeTruthy()
 })
 
-test("Should return textarea React element", () => {
-    const obj =  {label: "Text", 'type': 'textarea'}
+test("Should return textarea React element", async() => {
+    const obj =  {label: "", 'type': types[1]}
     const instance = create(<Switch fields={obj} index={0}/>)
-    // eslint-disable-next-line testing-library/await-async-query
-    const element =  instance.root.findByType(Textarea)
+    const element = await instance.root.findByType(Textarea)
     expect(element).toBeTruthy()
 })
