@@ -43,7 +43,7 @@ export const Config = ({ setConfig }: IConfigProps): JSX.Element => {
       return true;
     } catch (error) {
       setError("Invalid JSON");
-      console.error(error)
+      console.error(error);
     }
     return false;
   };

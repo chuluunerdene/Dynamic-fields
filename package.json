@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "react-test-renderer": "^17.0.2",
     "styled-components": "^5.3.3",
     "typescript": "^4.5.5",
     "web-vitals": "^2.1.4"
@@ -42,7 +43,9 @@
     ]
   },
   "devDependencies": {
+    "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.21",
+    "eslint-plugin-testing-library": "^5.0.5",
     "prettier": "2.5.1"
   }
 }
